@@ -4,7 +4,7 @@
 int main()
 {
 	srand(time(0));
-	Stack ST;
+	Stack<char> ST;
 	char c;
 
 	while (!ST.isFull()) {

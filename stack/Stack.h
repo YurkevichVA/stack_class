@@ -5,20 +5,21 @@
 
 using namespace std;
 
+template<class T>
 class Stack
 {
 	enum { EMPTY = -1, FULL = 30 };
 
-	char stack[FULL + 1];
+	T stack[FULL + 1];
 
 	int top;
 public:
 	//ctor
-	Stack();
+	Stack<T>();
 	//push
-	void push(char c);
+	void push(T c);
 	//pop
-	char pop();
+	T pop();
 	//clear
 	void clear();
 	//empty
@@ -29,3 +30,46 @@ public:
 	int getCount();
 };
 
+template<class T>
+Stack<T>::Stack()
+{
+	top = EMPTY;
+}
+
+template<class T>
+void Stack<T>::push(T c)
+{
+	if (!isFull()) stack[++top] = c;
+	else cout << "Stack is full!" << endl;
+}
+
+template<class T>
+T Stack<T>::pop()
+{
+	if (!isEmpty()) return stack[top--];
+	else return 0;
+}
+
+template<class T>
+void Stack<T>::clear()
+{
+	top = EMPTY;
+}
+
+template<class T>
+bool Stack<T>::isEmpty()
+{
+	return top == EMPTY;
+}
+
+template<class T>
+bool Stack<T>::isFull()
+{
+	return top == FULL;
+}
+
+template<class T>
+int Stack<T>::getCount()
+{
+	return top + 1;
+}
